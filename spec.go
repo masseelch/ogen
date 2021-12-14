@@ -126,6 +126,7 @@ type Operation struct {
 	// A list of tags for API documentation control.
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
 	Tags        []string     `json:"tags,omitempty"`
+	Summary     string       `json:"summary,omitempty"`
 	Description string       `json:"description,omitempty"`
 	OperationID string       `json:"operationId,omitempty"`
 	Parameters  []Parameter  `json:"parameters,omitempty"`
@@ -240,7 +241,8 @@ type Schema struct {
 	Required []string `json:"required,omitempty"`
 
 	// Value MUST be an object and not an array.
-	// Inline or referenced schema MUST be of a Schema Object and not a standard
+	// Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema. 
+	// MUST be present if the Type is "array".
 	Items *Schema `json:"items,omitempty"`
 
 	// A true value adds "null" to the allowed type specified by the type keyword,
